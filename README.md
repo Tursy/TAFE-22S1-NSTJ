@@ -19,10 +19,7 @@ Among a range of incredibly useful features not mentioned in this document (for 
 
 * Nicholas Turci
 * Stephanie Lewis III
-* Tung Hoang*
-* Jared Vorstern*
-
-*Not really though
+* Tung Hoang
 
 ## INSTALLATION
 ---------------
