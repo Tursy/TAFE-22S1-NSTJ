@@ -1,7 +1,7 @@
 Product Maintenance
 
 Copyright (c) [2021] [Stephanie Lewis, Nicholas Turci, and Tung Hoang (and 
-also possibly but probably not, Jared Vorstern)]
+also possibly but probably not: Jared Vorstern)]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
