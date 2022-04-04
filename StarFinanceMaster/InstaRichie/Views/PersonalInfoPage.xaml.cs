@@ -53,7 +53,7 @@ namespace StartFinance.Views
 
         private async void AddPersonalInfo_Button_Click(object sender, RoutedEventArgs e)
         {
-            // Attempts to insert a PersonalInfos object using the data in the textbox fields
+            // Attempts to insert a PersonalInfo object using the data in the textbox fields
             try
             {
                 StringBuilder errors = new StringBuilder();
