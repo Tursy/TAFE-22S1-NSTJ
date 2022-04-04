@@ -87,7 +87,6 @@ namespace StartFinance.Views
                     await dialog.ShowAsync();
                 }
 
-
                 else
                 {
 
@@ -101,7 +100,6 @@ namespace StartFinance.Views
                     //startDateTime = startDateTime.ToLocalTime(); //.TimeSpan,
                     //endDateTime = endDateTime.ToLocalTime();
 
-
                     // Inserts the data
                     conn.Insert(new NewAppointments()
                     {
@@ -112,9 +110,7 @@ namespace StartFinance.Views
                         EndTime = endDateTime //.ToLocalTime() //.Time,
                     });
                     Results();
-
                 }
-
             }
             catch (Exception ex)
             {   // Exception to display when amount is invalid or not numbers
@@ -156,6 +152,7 @@ namespace StartFinance.Views
             try
             {
                 string delSelection = ((NewAppointments)AppointmentList.SelectedItem).EventName;
+
                 if (delSelection == null)
                 {
                     MessageDialog dialog = new MessageDialog("You have not selected an item to delete", "Oops..!");
@@ -172,14 +169,12 @@ namespace StartFinance.Views
                     //AppointmentList.ItemsSource = query4.ToList();
                 }
             }
+
             catch (NullReferenceException)
             {
                 MessageDialog dialog = new MessageDialog("You have not selected an item to delete", "Oops..!");
                 await dialog.ShowAsync();
             }
-
-            
         }
-
     }
 }
