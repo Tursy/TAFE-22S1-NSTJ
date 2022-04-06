@@ -19,8 +19,8 @@ Among a range of incredibly useful features not mentioned in this document for b
 
 * Nicholas Turci
 * Stephanie Lewis III
-~~* Tung Hoang~~
-~~* Jared Vorster~~
+* ~~Tung Hoang~~
+* ~~Jared Vorster~~
 
 ## INSTALLATION
 ---------------
