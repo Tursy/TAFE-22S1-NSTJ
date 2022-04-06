@@ -86,6 +86,11 @@ namespace StartFinance.Views
                 {
                     errors.Append("Mobile phone number cannot be left blank.\n");
                     invalid = true;
+                } 
+                else if (int.TryParse(MobilePhone_TextBox.Text, out i) == false)
+                {
+                    errors.Append("Mobile phone number must be an integer.\n");
+                    invalid = true;
                 }
 
                 // Display errors if there are any
