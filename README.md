@@ -1,10 +1,10 @@
-## 5TSD FINANCE ASSIGNMENT REPOSITORY - GROUP 4 (THE BEST GROUP^TM)
-===================================================================
+## 5TSD FINANCE ASSIGNMENT REPOSITORY - GROUP 4: THE BEST GROUP (TM)
+--------------------------------------------------------------------
 
 ## INTRODUCTION
 ---------------
 
-Among a range of incredibly useful features not mentioned in this document (for brevity, not laziness!), this application calculates the total price of the product.
+Among a range of incredibly useful features not mentioned in this document for brevity (not laziness!), this application calculates the total price of the product.
 
 ## SOFTWARE USED
 ----------------
@@ -19,7 +19,8 @@ Among a range of incredibly useful features not mentioned in this document (for 
 
 * Nicholas Turci
 * Stephanie Lewis III
-* Tung Hoang
+~~* Tung Hoang~~
+~~* Jared Vorster~~
 
 ## INSTALLATION
 ---------------
