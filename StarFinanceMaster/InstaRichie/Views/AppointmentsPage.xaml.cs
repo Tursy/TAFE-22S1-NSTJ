@@ -46,7 +46,7 @@ namespace StartFinance.Views
             AppointmentList.ItemsSource = query.ToList();
         }
 
-        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private async void addAppointment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -93,21 +93,16 @@ namespace StartFinance.Views
                     // date picker also grabs current time/run time of the app and so when you add the time from the time picker it results in weird time issues
                     // .Date.Date strips the time from the date picker, resetting to midnight. The time from the time picker is then addded and converted.
 
-                    // Should work
                     DateTime startDateTime = appointmentDatePicker.Date.Date.Add(appStartTimePicker.Time).ToLocalTime();
                     DateTime endDateTime = appointmentDatePicker.Date.Date.Add(appEndTimePicker.Time).ToLocalTime();
-
-                    //startDateTime = startDateTime.ToLocalTime(); //.TimeSpan,
-                    //endDateTime = endDateTime.ToLocalTime();
 
                     // Inserts the data
                     conn.Insert(new NewAppointments()
                     {
                         EventName = EventNameBox.Text,
                         Location = LocationBox.Text,
-                        //EventDate = eventDateTime,
-                        StartTime = startDateTime, //.ToLocalTime(), //.TimeSpan,
-                        EndTime = endDateTime //.ToLocalTime() //.Time,
+                        StartTime = startDateTime,
+                        EndTime = endDateTime
                     });
                     Results();
                 }
@@ -129,7 +124,6 @@ namespace StartFinance.Views
                     MessageDialog dialog = new MessageDialog("An unknown eror has occured", "Oops..!");
                     await dialog.ShowAsync();
                 }
-
             }
         }
 
@@ -146,7 +140,7 @@ namespace StartFinance.Views
             Results();
         }
 
-        private async void DeleteItem_Click(object sender, RoutedEventArgs e)
+        private async void deleteItem_Click(object sender, RoutedEventArgs e)
         {
 
             try
@@ -176,5 +170,6 @@ namespace StartFinance.Views
                 await dialog.ShowAsync();
             }
         }
+
     }
 }

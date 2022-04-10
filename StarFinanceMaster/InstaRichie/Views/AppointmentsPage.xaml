@@ -81,8 +81,8 @@
 
             <!--   secondary commands  -->
             <controls:PageHeader.PrimaryCommands>
-                <AppBarButton Icon="Add" Label="Add Appointment" Click="AppBarButton_Click" />
-                <AppBarButton Icon="Delete" Label="Delete" Click="DeleteItem_Click" />
+                <AppBarButton Icon="Add" Label="Add Appointment" Click="addAppointment_Click" />
+                <AppBarButton Icon="Delete" Label="Delete" Click="deleteItem_Click" />
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
 
@@ -103,7 +103,6 @@
                         <DatePicker x:Name="appointmentDatePicker" Header="Date of Appointment"/>
                         <TimePicker x:Name="appStartTimePicker" Header="Appointment Start Time"/>
                         <TimePicker x:Name="appEndTimePicker" Header="Appointment End Time"/>
-                        <!--<TextBlock x:Name="testTextBlock" HorizontalAlignment="Left" Margin="218,0,0,0" Text="OUTPUT TESTING" TextWrapping="Wrap"/>-->
 
                     </StackPanel>
                     <ListView x:Name="AppointmentList" Grid.Row="1" ItemTemplate="{StaticResource AppointmentsListView}"

@@ -22,7 +22,7 @@
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>213919E16F418F8C2DC604E6BD0DA200B3F6BD99</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>2C755D9114F1CECAAAB1611D1A51DA198D6A35CF</PackageCertificateThumbprint>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
