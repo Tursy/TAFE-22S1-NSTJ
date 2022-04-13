@@ -20,7 +20,6 @@
                 <TextBlock Text="{Binding AppointmentID}" Padding="0,0,15,0"/>
                 <TextBlock Text="{Binding EventName}" Padding="0,0,15,0"/>
                 <TextBlock Text="{Binding Location}" Padding="0,0,15,0"/>
-                <!--<TextBlock Text="{Binding EventDate}" Padding="0,0,15,0"/>-->
                 <TextBlock Text="{Binding StartTime}" Padding="0,0,15,0"/>
                 <TextBlock Text="{Binding EndTime}"/>
             </StackPanel>
@@ -81,8 +80,8 @@
 
             <!--   secondary commands  -->
             <controls:PageHeader.PrimaryCommands>
-                <AppBarButton Icon="Add" Label="Add Appointment" Click="addAppointment_Click" />
-                <AppBarButton Icon="Delete" Label="Delete" Click="deleteItem_Click" />
+                <AppBarButton Icon="Add" Label="Add Appointment" Click="AddAppointment_Click" />
+                <AppBarButton Icon="Delete" Label="Delete Appointment" Click="DeleteAppointment_Click" />
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
 

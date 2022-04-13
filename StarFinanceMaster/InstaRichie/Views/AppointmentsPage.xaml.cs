@@ -41,12 +41,12 @@ namespace StartFinance.Views
         public void Results()
         {
             // Creating table
-            conn.CreateTable<NewAppointments>();
-            var query = conn.Table<NewAppointments>();
+            conn.CreateTable<Appointments>();
+            var query = conn.Table<Appointments>();
             AppointmentList.ItemsSource = query.ToList();
         }
 
-        private async void addAppointment_Click(object sender, RoutedEventArgs e)
+        private async void AddAppointment_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace StartFinance.Views
                 }
 
                 // checks if appointment location is null
-                if (LocationBox.Text.ToString() == "")
+                else if (LocationBox.Text.ToString() == "")
                 {
                     MessageDialog dialog = new MessageDialog("Event location not entered", "Oops..!");
                     await dialog.ShowAsync();
@@ -97,7 +97,7 @@ namespace StartFinance.Views
                     DateTime endDateTime = appointmentDatePicker.Date.Date.Add(appEndTimePicker.Time).ToLocalTime();
 
                     // Inserts the data
-                    conn.Insert(new NewAppointments()
+                    conn.Insert(new Appointments()
                     {
                         EventName = EventNameBox.Text,
                         Location = LocationBox.Text,
@@ -107,6 +107,7 @@ namespace StartFinance.Views
                     Results();
                 }
             }
+
             catch (Exception ex)
             {   // Exception to display when amount is invalid or not numbers
                 if (ex is FormatException)
@@ -140,12 +141,12 @@ namespace StartFinance.Views
             Results();
         }
 
-        private async void deleteItem_Click(object sender, RoutedEventArgs e)
+        private async void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
-                string delSelection = ((NewAppointments)AppointmentList.SelectedItem).EventName;
+                string delSelection = ((Appointments)AppointmentList.SelectedItem).AppointmentID.ToString();
 
                 if (delSelection == null)
                 {
@@ -154,22 +155,25 @@ namespace StartFinance.Views
                 }
                 else
                 {
-                    conn.CreateTable<NewAppointments>();
-                    var query1 = conn.Table<NewAppointments>();
-                    var query3 = conn.Query<NewAppointments>("DELETE FROM NewAppointments WHERE EventName ='" + delSelection + "'");
-                    //var query4 = conn.Query<NewAppointments>("SELECT * FROM NewAppointments");
+                    conn.Query<Appointments>("DELETE FROM Appointments WHERE AppointmentID ='" + delSelection + "'");
 
-                    AppointmentList.ItemsSource = query1.ToList();
-                    //AppointmentList.ItemsSource = query4.ToList();
+                    Results();
                 }
             }
 
-            catch (NullReferenceException)
-            {
-                MessageDialog dialog = new MessageDialog("You have not selected an item to delete", "Oops..!");
-                await dialog.ShowAsync();
+            catch (Exception ex)
+            {   // Exception to display when amount is invalid or not numbers
+                if (ex is NullReferenceException)
+                {
+                    MessageDialog dialog = new MessageDialog("You have not selected an item to delete", "Oops..!");
+                    await dialog.ShowAsync();
+                }   // Exception handling when SQLite contraints are violated
+                else
+                {
+                    MessageDialog dialog = new MessageDialog("An unknown eror has occured", "Oops..!");
+                    await dialog.ShowAsync();
+                }
             }
         }
-
     }
 }
