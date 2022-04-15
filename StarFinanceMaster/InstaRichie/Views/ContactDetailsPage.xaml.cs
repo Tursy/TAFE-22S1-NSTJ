@@ -175,7 +175,8 @@ namespace StartFinance.Views
                 else
                 {
                     // Update ContactDetails object with the specified ID
-                    conn.Query<ContactDetails>("UPDATE ContactDetails SET FirstName='" +  FirstName_TextBox.Text
+                    conn.Query<ContactDetails>("UPDATE ContactDetails SET "
+                        + " FirstName='" + FirstName_TextBox.Text
                         + "', LastName='" + LastName_TextBox.Text
                         + "', CompanyName='" + CompanyName_TextBox.Text
                         + "', MobilePhone='" + MobilePhone_TextBox.Text

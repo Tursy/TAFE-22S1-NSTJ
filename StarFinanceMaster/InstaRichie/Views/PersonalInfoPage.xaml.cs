@@ -58,7 +58,6 @@ namespace StartFinance.Views
             {
                 StringBuilder errors = new StringBuilder();
                 bool invalid = false;
-                int i; // Needed for the TryParse method
 
                 // FirstName
                 if (FirstName_TextBox.Text == "")
