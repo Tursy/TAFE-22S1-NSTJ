@@ -236,6 +236,8 @@ namespace StartFinance.Views
                     });
                     Results();
 
+                    // some of my last/last attempts at getting it working the original way
+
                     // grabs appointment id of selected item, sets variables to prepare for database insertion
                     //string updateSelection = ((Appointments)AppointmentList.SelectedItem).AppointmentID.ToString();
 
