@@ -82,6 +82,7 @@
             <controls:PageHeader.PrimaryCommands>
                 <AppBarButton Icon="Add" Label="Add Appointment" Click="AddAppointment_Click" />
                 <AppBarButton Icon="Delete" Label="Delete Appointment" Click="DeleteAppointment_Click" />
+                <AppBarButton Icon="Shuffle" Label="Update Appointment" Click="UpdateAppointment_Click" />
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
 

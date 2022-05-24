@@ -89,7 +89,6 @@ namespace StartFinance.Views
 
                 else
                 {
-
                     // date picker also grabs current time/run time of the app and so when you add the time from the time picker it results in weird time issues
                     // .Date.Date strips the time from the date picker, resetting to midnight. The time from the time picker is then addded and converted.
 
@@ -175,5 +174,113 @@ namespace StartFinance.Views
                 }
             }
         }
+
+        private async void UpdateAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // validating that necessary fields are not left null
+
+                // checks if appointment name is null
+                if (EventNameBox.Text.ToString() == "")
+                {
+                    MessageDialog dialog = new MessageDialog("Event name not entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+
+                // checks if appointment location is null
+                else if (LocationBox.Text.ToString() == "")
+                {
+                    MessageDialog dialog = new MessageDialog("Event location not entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+
+                // checks if appointment date is null
+                else if (appointmentDatePicker.SelectedDate == null)
+                {
+                    MessageDialog dialog = new MessageDialog("Appointment date not entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+
+                // checks if appointment start time is null
+                else if (appStartTimePicker.SelectedTime == null)
+                {
+                    MessageDialog dialog = new MessageDialog("Appointment start time not entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+
+                // checks if appointment end time is null
+                else if (appEndTimePicker.SelectedTime == null)
+                {
+                    MessageDialog dialog = new MessageDialog("Appointment end time not entered", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+
+                else
+                {
+                    // had issues with time for updating, couldn't fix, current solution deletes selected item and inserts new
+                    
+                    string delSelection = ((Appointments)AppointmentList.SelectedItem).AppointmentID.ToString();
+                    conn.Query<Appointments>("DELETE FROM Appointments WHERE AppointmentID ='" + delSelection + "'");
+
+                    DateTime startDateTime = appointmentDatePicker.Date.Date.Add(appStartTimePicker.Time).ToLocalTime();
+                    DateTime endDateTime = appointmentDatePicker.Date.Date.Add(appEndTimePicker.Time).ToLocalTime();
+
+                    // Inserts the data
+                    conn.Insert(new Appointments()
+                    {
+                        EventName = EventNameBox.Text,
+                        Location = LocationBox.Text,
+                        StartTime = startDateTime,
+                        EndTime = endDateTime
+                    });
+                    Results();
+
+                    // grabs appointment id of selected item, sets variables to prepare for database insertion
+                    //string updateSelection = ((Appointments)AppointmentList.SelectedItem).AppointmentID.ToString();
+
+                    //DateTime startDateTime = appointmentDatePicker.Date.Date.Add(appStartTimePicker.Time);//.ToLocalTime();
+                    //DateTime endDateTime = appointmentDatePicker.Date.Date.Add(appEndTimePicker.Time);//.ToLocalTime();
+
+                    //String EventName = EventNameBox.Text;
+                    //String Location = LocationBox.Text;
+                    //String str_StartTime = startDateTime.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss");
+                    //String str_EndTime = endDateTime.ToString("yyyy'-'MM'-'dd' 'HH':'mm':'ss");
+
+                    //DateTime StartTime = startDateTime;
+                    //DateTime EndTime = endDateTime;
+
+                    // updates database
+                    //conn.Query<Appointments>("UPDATE Appointments SET EventName='" + EventName +
+                    //    "', Location='" + Location +
+                    //    "', StartTime='" + str_StartTime + //StartTime
+                    //    "', EndTime ='" + str_EndTime + //EndTime
+                    //    "' WHERE AppointmentID ='" + int.Parse(updateSelection) + "'");
+
+                    //Results();
+                }
+            }
+
+            catch (Exception ex)
+            {   // Exception to display when amount is invalid or not numbers
+                if (ex is FormatException)
+                {
+                    MessageDialog dialog = new MessageDialog("You forgot to enter the event name or entered invalid data", "Oops..!");
+                    await dialog.ShowAsync();
+                }   // Exception handling when SQLite contraints are violated
+                else if (ex is SQLiteException)
+                {
+                    //MessageDialog dialog = new MessageDialog("Event Name already exists, Try a different name", "Oops..!");
+                    MessageDialog dialog = new MessageDialog("Event Name already exists, Try a different name", ex.Message);
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    MessageDialog dialog = new MessageDialog("An unknown eror has occured", "Oops..!");
+                    await dialog.ShowAsync();
+                }
+            }
+        }
+
     }
 }
